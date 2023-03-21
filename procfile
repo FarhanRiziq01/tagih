@@ -1,1 +1,1 @@
-bin/tagih
+main: bin/gocroot
