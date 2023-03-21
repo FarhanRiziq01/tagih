@@ -1,4 +1,4 @@
-module iteung
+module github.com/FarhanRiziq01/tagih
 
 go 1.20
 
