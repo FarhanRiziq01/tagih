@@ -2,6 +2,7 @@ package controller
 
 import (
 	"github.com/FarhanRiziq01/tagih/config"
+	"github.com/aiteung/musik"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
@@ -42,5 +43,6 @@ func PostWhatsAuthRequest(c *fiber.Ctx) error {
 }
 
 func GetHome(c *fiber.Ctx) error {
-	return c.JSON("Hallo World!")
+	getip := musik.GetIPaddress()
+	return c.JSON(getip)
 }
