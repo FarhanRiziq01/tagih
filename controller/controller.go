@@ -1,25 +1,19 @@
 package controller
 
 import (
-	"github.com/FarhanRiziq01/tagih/config"
-	"github.com/aiteung/musik"
+	"net/http"
 
+	"github.com/aiteung/musik"
+	gege "github.com/gocroot/kampus/model"
+	gaga "github.com/gocroot/kampus/module"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/websocket/v2"
+	"github.com/harisriyoni3/iteung/config"
 	"github.com/whatsauth/whatsauth"
 )
 
-type HTTPRequest struct {
-	Header string `json:"header"`
-	Body   string `json:"body"`
-}
-
-func Sink(c *fiber.Ctx) error {
-	var req HTTPRequest
-	req.Header = string(c.Request().Header.Header())
-	req.Body = string(c.Request().Body())
-	return c.JSON(req)
-}
+var suratdek = "surat"
+var user = "users"
 
 func WsWhatsAuthQR(c *websocket.Conn) {
 	whatsauth.RunSocket(c, config.PublicKey, config.Usertables[:], config.Ulbimariaconn)
@@ -45,4 +39,36 @@ func PostWhatsAuthRequest(c *fiber.Ctx) error {
 func GetHome(c *fiber.Ctx) error {
 	getip := musik.GetIPaddress()
 	return c.JSON(getip)
+}
+
+//	func GetUserDataNomer(c *fiber.Ctx) error {
+//		getstats := gaga.GetUserData("081234567890", config.MongoConn, user)
+//		return c.JSON(getstats)
+//	}
+func GetSurat(c *fiber.Ctx) error {
+	getstats := gaga.GetSurat("Kamu", config.MongoConn, user)
+	return c.JSON(getstats)
+}
+
+func GetUserDataNama(c *fiber.Ctx) error {
+	getstats := gaga.GetNamaUser("Haris Riyoni", config.MongoConn, user)
+	return c.JSON(getstats)
+}
+
+func InsertDataSuratChat(c *fiber.Ctx) error {
+	database := config.MongoConn
+	var srt gege.Surat
+	if err := c.BodyParser(&srt); err != nil {
+		return err
+	}
+	Inserted := gaga.InsertSuratChat(database,
+		suratdek,
+		srt.Isisurat,
+		srt.Subject,
+	)
+	return c.JSON(map[string]interface{}{
+		"status":      http.StatusOK,
+		"message":     "Data berhasil disimpan.",
+		"inserted_id": Inserted,
+	})
 }
