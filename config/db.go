@@ -20,7 +20,7 @@ var DBUlbimariainfo = atdb.DBInfo{
 
 var DBMongoInfo = atdb.DBInfo{
 	DBString: MongoString,
-	DBName:   "suratdibai",
+	DBName:   "tagihan",
 }
 
 var MongoConn = atdb.MongoConnect(DBMongoInfo)

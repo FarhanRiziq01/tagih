@@ -3,7 +3,6 @@ module github.com/FarhanRiziq01/tagih
 go 1.20
 
 require (
-	github.com/FarhanRiziq01/inibackendriziq v0.0.3
 	github.com/aiteung/atdb v0.0.11
 	github.com/aiteung/musik v0.0.5
 	github.com/gofiber/fiber/v2 v2.47.0
