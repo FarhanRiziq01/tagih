@@ -47,12 +47,12 @@ func GetPelanggan(c *fiber.Ctx) error {
 }
 
 func GetTagihan(c *fiber.Ctx) error {
-	getstatus := inibackendriziq.GetDataTagihan("complete")
+	getstatus := inibackendriziq.GetDataTagihan("$5000.00")
 	return c.JSON(getstatus)
 }
 
 func GetPembayaran(c *fiber.Ctx) error {
-	getstatus := inibackendriziq.GetDataPembayaran("transfer")
+	getstatus := inibackendriziq.GetDataPembayaran("$2500.00")
 	return c.JSON(getstatus)
 }
 
