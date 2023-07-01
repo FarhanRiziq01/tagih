@@ -47,20 +47,20 @@ func GetPelanggan(c *fiber.Ctx) error {
 }
 
 func GetTagihan(c *fiber.Ctx) error {
-	getstatus := inibackendriziq.GetDataTagihan("08.01.2021")
+	getstatus := inibackendriziq.GetDataTagihan("complete")
 	return c.JSON(getstatus)
 }
 
 func GetPembayaran(c *fiber.Ctx) error {
-	getstatus := inibackendriziq.GetDataPembayaran("05.01.2021")
+	getstatus := inibackendriziq.GetDataPembayaran("transfer")
 	return c.JSON(getstatus)
 }
 
 func GetProduk(c *fiber.Ctx) error {
-	getstatus := inibackendriziq.GetDataProduk("Spotify")
+	getstatus := inibackendriziq.GetDataProduk("$5000.00")
 	return c.JSON(getstatus)
 }
 func GetAbout(c *fiber.Ctx) error {
-	getstatus := inibackendriziq.GetDataAbout("tes")
+	getstatus := inibackendriziq.GetDataAbout("isi satu")
 	return c.JSON(getstatus)
 }
